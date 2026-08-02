@@ -1091,15 +1091,61 @@
 }
 .cs-item:first-child { border-top: none; padding-top: 0; }
 .cs-item-top {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 18px;
 }
+.cs-item-meta {
+  color: var(--gold-dim);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+.cs-item-title { max-width: 640px; }
+.cs-item-short { max-width: 640px; }
 .cs-item-img {
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 12px 30px rgba(2,21,32,0.15);
+  max-width: 560px;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(2,21,32,0.18);
+  margin: 6px 0 4px;
+}
+
+/* Stats table inside details */
+.cs-stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+.cs-stats-table th, .cs-stats-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(2,21,32,0.08);
+}
+.cs-stats-table th {
+  background: var(--dark);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.cs-stats-table th:first-child { border-top-left-radius: 8px; }
+.cs-stats-table th:last-child { border-top-right-radius: 8px; }
+.cs-stats-table tr:last-child td { border-bottom: none; }
+.cs-stats-table td:last-child { font-weight: 700; color: var(--dark); }
+.cs-growth-note {
+  background: rgba(240,180,41,0.1);
+  border-left: 4px solid var(--gold);
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 16px;
 }
 .cs-item-title {
   font-family: 'Playfair Display', serif;
@@ -1618,30 +1664,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- ===== CASE STUDY 1 ===== -->
     <div class="cs-item">
       <div class="cs-item-top">
+        <div class="cs-item-meta">Residential Electrical Renovation · Toronto, Canada</div>
+        <h3 class="cs-item-title">46% Lower Cost Per Lead — Built From a Brand New Google Ads Account</h3>
+        <p class="cs-item-short">Zero prior Google Ads history, zero conversion data — built entirely from scratch, with CPL dropping from SGD 67 to SGD 36 in 4 months.</p>
         <img src="images/Case_study-1.webp" alt="Case Study 1 - Toronto electrical renovation Google Ads results" class="cs-item-img" loading="lazy">
-        <div>
-          <h3 class="cs-item-title">Case Study 1: Reduced Cost Per Lead by 46% in 4 Months</h3>
-          <p class="cs-item-short">A residential electrical renovation company in Toronto — zero prior Google Ads history, built entirely from scratch.</p>
-          <button class="cs-view-btn" data-target="cs-details-1">View Details Case Study <span class="cs-btn-arrow">▾</span></button>
-        </div>
+        <button class="cs-view-btn" data-target="cs-details-1">View Details Case Study <span class="cs-btn-arrow">▾</span></button>
       </div>
       <div class="cs-details" id="cs-details-1">
         <div class="cs-details-inner">
-          <div class="cs-stats-row">
-            <span class="cs-stat">📊 Total Spend: SGD 6,005</span>
-            <span class="cs-stat">📈 Leads: 121</span>
-            <span class="cs-stat">💰 Avg CPL: SGD 49.43</span>
-            <span class="cs-stat">🔁 Conv Rate: 4.8% → 10.5%</span>
-            <span class="cs-stat">📉 CPL: SGD 67 → SGD 36</span>
-          </div>
-          <p>The client was a residential electrical renovation company in Toronto. No prior Google Ads history. No existing conversion data. Everything built from scratch.</p>
-          <p><strong>What actually moved the needle:</strong></p>
-          <p>→ Started with Maximize Clicks to build conversion data before optimizing<br>
+          <p><strong>Starting Point:</strong> Zero prior Google Ads history, zero conversion data — built entirely from scratch.</p>
+
+          <p style="margin-top:14px;"><strong>The Challenge</strong><br>
+          The client had no existing Google Ads account, no historical conversion data, and no baseline to optimize against. Every decision in the first weeks had to be made without the safety net of past performance data.</p>
+
+          <p style="margin-top:14px;"><strong>4-Month Results</strong></p>
+          <table class="cs-stats-table">
+            <tr><th>Metric</th><th>Result</th></tr>
+            <tr><td>Total Spend</td><td>SGD 6,005</td></tr>
+            <tr><td>Total Leads Generated</td><td>121</td></tr>
+            <tr><td>Average CPL</td><td>SGD 49.43</td></tr>
+            <tr><td>Conversion Rate</td><td>4.8% → 10.5%</td></tr>
+            <tr><td>Cost Per Lead</td><td>SGD 67 → SGD 36 (-46%)</td></tr>
+          </table>
+
+          <p><strong>What Actually Moved the Needle</strong></p>
+          <p>→ Started on Maximize Clicks to accumulate real conversion data before switching strategies — no premature optimization on zero data<br>
           → Weekly search term audits from day one — not monthly, not "when something feels off"<br>
-          → Structured 2 separate campaigns by service type so budget didn't bleed across unrelated intent<br>
-          → Switched to Maximize Conversions only after 55+ conversions were accumulated<br>
-          → Negative keywords refined continuously — not just at launch</p>
-          <p>The biggest lesson? Lower click volume with better targeting always beats higher click volume with worse targeting. Clicks dropped. Leads went up. CPL dropped 46%.</p>
+          → Two separate campaigns split by service type so budget never bled across unrelated search intent<br>
+          → Switched to Maximize Conversions only after 55+ conversions had accumulated — giving the algorithm enough signal to actually learn<br>
+          → Continuous negative keyword refinement — not a one-time setup at launch, but an ongoing weekly discipline</p>
+
+          <p style="margin-top:14px;"><strong>The Takeaway</strong><br>
+          Lower click volume with tighter targeting beats higher click volume with loose targeting, every time. Clicks dropped. Leads went up. CPL dropped 46% — because every dollar was being spent on someone who actually wanted the service.</p>
         </div>
       </div>
     </div>
@@ -1649,26 +1703,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- ===== CASE STUDY 2 ===== -->
     <div class="cs-item">
       <div class="cs-item-top">
+        <div class="cs-item-meta">HVAC · Calgary, Canada</div>
+        <h3 class="cs-item-title">Turning Searches Into Qualified HVAC Leads</h3>
+        <p class="cs-item-short">Reaching homeowners actively searching for HVAC services and generating qualified leads at a sustainable, predictable cost.</p>
         <img src="images/Case_study-2.webp" alt="Case Study 2 - Calgary HVAC Google Ads results" class="cs-item-img" loading="lazy">
-        <div>
-          <h3 class="cs-item-title">Case Study 2: Turning Searches into Qualified HVAC Leads</h3>
-          <p class="cs-item-short">A local HVAC company in Calgary, Canada — steady growth in qualified leads over 4 months while cutting cost per lead.</p>
-          <button class="cs-view-btn" data-target="cs-details-2">View Details Case Study <span class="cs-btn-arrow">▾</span></button>
-        </div>
+        <button class="cs-view-btn" data-target="cs-details-2">View Details Case Study <span class="cs-btn-arrow">▾</span></button>
       </div>
       <div class="cs-details" id="cs-details-2">
         <div class="cs-details-inner">
-          <div class="cs-stats-row">
-            <span class="cs-stat">✅ Clicks: 4,236</span>
-            <span class="cs-stat">✅ Spend: CAD $27,300</span>
-            <span class="cs-stat">✅ Leads: 182</span>
-            <span class="cs-stat">✅ CPL: CAD $150</span>
-            <span class="cs-stat">✅ Conv Rate: 4.30%</span>
-          </div>
-          <p>A local HVAC company in Calgary, Canada wanted a reliable way to generate more phone calls and service inquiries through Google Ads. The goal was simple: reach homeowners who were actively searching for HVAC services and generate qualified leads at a sustainable cost.</p>
-          <p>Over 4 months, the campaign delivered steady growth by focusing on high-intent searches and continuous optimization, resulting in more qualified leads while keeping costs under control.</p>
-          <p>The campaign finished with <strong>68% more monthly leads</strong> than where it started, while reducing the cost per lead by <strong>31%</strong> over the same period.</p>
-          <p><strong>The biggest takeaway?</strong> Google Ads isn't about getting the most clicks — it's about showing up when people are actively looking for your service and turning those searches into real phone calls and booked jobs.</p>
+          <p><strong>Goal:</strong> Reach homeowners actively searching for HVAC services and generate qualified leads at a sustainable, predictable cost.</p>
+
+          <p style="margin-top:14px;"><strong>The Challenge</strong><br>
+          The client needed a reliable, repeatable channel for phone calls and service inquiries — not just website traffic. Success meant showing up at the exact moment a homeowner was searching, and converting that intent into a booked job.</p>
+
+          <p style="margin-top:14px;"><strong>4-Month Campaign Results</strong></p>
+          <table class="cs-stats-table">
+            <tr><th>Metric</th><th>Result</th></tr>
+            <tr><td>Clicks</td><td>4,236</td></tr>
+            <tr><td>Ad Spend</td><td>CAD $27,300</td></tr>
+            <tr><td>Qualified Leads (Calls &amp; Forms)</td><td>182</td></tr>
+            <tr><td>Cost Per Lead</td><td>CAD $150</td></tr>
+            <tr><td>Conversion Rate</td><td>4.30%</td></tr>
+          </table>
+
+          <div class="cs-growth-note">📈 Growth over the period: 68% more monthly leads by month 4, with cost per lead down 31% from where the campaign started.</div>
+
+          <p><strong>The Takeaway</strong><br>
+          Google Ads isn't about maximizing clicks — it's about showing up at the exact moment someone is actively looking for your service, and turning that search into a real phone call or booked job.</p>
+
+          <p style="margin-top:14px;">If you run an HVAC, plumbing, electrical, roofing, or any other local service business, a well-managed Google Ads campaign becomes a consistent source of high-quality leads — not just traffic.</p>
         </div>
       </div>
     </div>
@@ -1676,12 +1739,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- ভবিষ্যতে নতুন case study যোগ করতে চাইলে, উপরের
          "===== CASE STUDY 2 =====" ব্লকটা পুরোটা কপি করে এখানে পেস্ট কর,
          তারপর নিচের জিনিসগুলো বদলে দে:
+         - cs-item-meta, title, short description
          - image src (Case_study-3.webp)
          - id="cs-details-2" → id="cs-details-3" (দুই জায়গায়: button data-target এবং div id)
-         - সব লেখা তোর নতুন কেস স্টাডির লেখা দিয়ে -->
-
-  </div>
-</div>
+         - stats table ও takeaway লেখা তোর নতুন কেস স্টাডির তথ্য দিয়ে -->
   
 <script>
   // Lazy-load Calendly script only when Contact section enters viewport
